@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:25:22 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/10 09:48:02 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:43:59 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ t_stack	*solve_3(t_stack *stack)
 	return (stack);
 }
 
+t_stacks	*solve_under_12(t_stacks *stacks)
+{
+	while (stack_height(stacks->a) > 3)
+		stacks = lowest_a_to_b(stacks);
+	stacks->a = solve_3(stacks->a);
+	while (stack_height(stacks->b))
+		send_num_to_stack(&stacks->b, &stacks->a, push_b);
+	return (stacks);
+}
+
 t_stacks	*solve_12_and_more(t_stacks *stacks)
 {
 	int	i;
@@ -83,11 +93,9 @@ t_stacks	*solve(t_stacks *stacks)
 		return (stacks);
 	if (stack_height(stacks->a) <= 12)
 	{
-		while (stack_height(stacks->a) > 3)
+		while (stack_height(stacks->a) > 5)
 			stacks = lowest_to_b(stacks);
-		stacks->a = solve_3(stacks->a);
-		while (stack_height(stacks->b))
-			send_num_to_stack(&stacks->b, &stacks->a, push_b);
+		stacks = solve_under_12(stacks);
 	}
 	else if (stack_height(stacks->a) > 12 && stack_height(stacks->a) <= 200)
 	{

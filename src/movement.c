@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:22:42 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/06 13:47:25 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:28:13 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stacks	*lowest_a_to_b(t_stacks *stacks)
 
 	lowest = find_lowest_number(stacks->a);
 	middle = stack_height(stacks->a) / 2;
-	if (middle > get_stack_pos(lowest, stacks->a))
+	if (middle >= get_stack_pos(lowest, stacks->a))
 	{
 		while (get_stack_pos(lowest, stacks->a) != 1)
 			stacks->a = rotation(stacks->a, rotate_a);

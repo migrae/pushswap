@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:56:41 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/10 09:48:09 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:44:07 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void		free_stack(t_stack *stack);
 void		shutdown(t_stacks *stacks, t_error type);
 
 //Solve
+t_stacks	*solve_under_12(t_stacks *stacks);
 int			stack_is_sorted(t_stack *stack);
 t_stacks	*solve(t_stacks *stacks);
 t_stack		*solve_3(t_stack *stack);
