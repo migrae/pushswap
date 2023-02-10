@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:38:45 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/09 16:33:36 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/10 09:40:39 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	load_stack(int argc, char **argv, t_stacks *stacks)
 		i++;
 	}
 	if (!stacks->a->next)
-		return (1);
+		shutdown(stacks, mute);
 	return (0);
 }
 
@@ -86,7 +86,8 @@ int	init_num_node(t_stacks *stacks, char *str)
 {
 	t_stack	*temp;
 
-	if (check_dubs(stacks, ft_atoi(str)))
+	if (check_dubs(stacks, ft_atoi(str)) || ft_atol(str) > INT_MAX
+		|| ft_atol(str) < INT_MIN)
 		return (1);
 	temp = ft_new_num_node(ft_atoi(str));
 	if (!temp)

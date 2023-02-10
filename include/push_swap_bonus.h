@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:56:41 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/09 17:06:15 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/10 09:42:07 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef enum e_error
 {
 	no_error,
 	error,
+	mute,
 }	t_error;
 
 //Checker

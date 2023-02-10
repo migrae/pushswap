@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:46:32 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/09 17:16:14 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/10 09:42:21 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	shutdown_bonus(t_stacks *stacks, t_error type)
 	free_stack_bonus(stacks->a);
 	free_stack_bonus(stacks->b);
 	free(stacks);
-	if (type)
+	if (type == 1)
 	{
 		ft_putendl_fd("Error", 2);
 		exit(EXIT_FAILURE);

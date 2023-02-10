@@ -6,11 +6,25 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:25:22 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/07 09:25:01 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/10 09:48:02 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+int	stack_is_sorted(t_stack *stack)
+{
+	t_stack	*current;
+
+	current = stack;
+	while (current->next)
+	{
+		if (current->number > current->next->number)
+			return (1);
+		current = current->next;
+	}
+	return (0);
+}
 
 t_stack	*solve_3(t_stack *stack)
 {	
@@ -65,6 +79,8 @@ t_stacks	*solve_12_and_more(t_stacks *stacks)
 t_stacks	*solve(t_stacks *stacks)
 {
 	index_stack(stacks->a);
+	if (!stack_is_sorted(stacks->a))
+		return (stacks);
 	if (stack_height(stacks->a) <= 12)
 	{
 		while (stack_height(stacks->a) > 3)
