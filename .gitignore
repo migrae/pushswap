@@ -1,0 +1,9 @@
+**.o
+**.a
+.vscode/
+a.out
+.DS_Store
+pain.sh
+push_swap
+checker_Mac
+checker
