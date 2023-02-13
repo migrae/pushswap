@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:38:45 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/10 09:41:54 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:49:37 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,17 @@ int	load_stack_bonus(int argc, char **argv, t_stacks *stacks)
 	int		j;
 	char	**split;
 
-	stacks->a = NULL;
 	i = 1;
 	while (i < argc)
 	{
-		argv[i] = ft_strtrim(argv[i], "\n\f\r\t\v");
+		argv[i] = ft_strtrim(argv[i], " \n\f\r\t\v");
+		if (ft_strlen(argv[i]) < 1)
+			shutdown(stacks, error);
 		split = ft_split(argv[i], ' ');
 		j = 0;
 		while (split[j])
 		{
-			if (check_split_bonus(split[j]))
-				return (free_2d_bonus(split), 1);
-			if (init_num_node(stacks, split[j]))
+			if (check_split_bonus(split[j]) || init_num_node(stacks, split[j]))
 				return (free_2d_bonus(split), 1);
 			j++;
 		}

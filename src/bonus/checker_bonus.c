@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:13:09 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/09 17:05:35 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:50:06 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 	stacks = malloc(sizeof(t_stacks *));
 	if (!stacks)
 		shutdown_bonus(stacks, error);
+	stacks->a = NULL;
 	if (check_input_bonus(argc, argv, stacks))
 		shutdown_bonus(stacks, error);
 	if (load_stack_bonus(argc, argv, stacks) || !stacks->a)
