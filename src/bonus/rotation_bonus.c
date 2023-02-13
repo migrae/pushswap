@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:25:32 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/06 17:06:41 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/13 08:44:01 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ t_stack	*rev_rotation_bonus(t_stack *stack)
 {
 	t_stack	*temp;
 
-	temp = stack;
-	stack = ft_stack_last(stack);
-	stack->next = temp;
-	while (temp->next != stack)
-		temp = temp->next;
-	temp->next = NULL;
+	if (stack && stack->next)
+	{
+		temp = stack;
+		stack = ft_stack_last(stack);
+		stack->next = temp;
+		while (temp->next != stack)
+			temp = temp->next;
+		temp->next = NULL;
+	}
 	return (stack);
 }
 

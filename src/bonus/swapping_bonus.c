@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:39:15 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/06 17:07:01 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:44:56 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ t_stack	*swap_first_num_bonus(t_stack *stack)
 {
 	t_stack	*temp;
 
-	temp = stack;
-	stack = stack->next;
-	temp->next = stack->next;
-	stack->next = temp;
+	if (stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		temp->next = stack->next;
+		stack->next = temp;
+	}
 	return (stack);
 }
 
@@ -41,7 +44,7 @@ void	send_num_to_stack_bonus(t_stack **stack_from, t_stack **stack_to)
 		temp->next = NULL;
 		*stack_to = temp;
 	}
-	else
+	else if (*stack_from && *stack_to)
 	{
 		temp = *stack_from;
 		*stack_from = temp->next;

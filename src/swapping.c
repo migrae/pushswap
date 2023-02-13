@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:39:15 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/06 11:35:42 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:42:30 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ t_stack	*swap_first_num(t_stack *stack, t_swap type)
 {
 	t_stack	*temp;
 
-	temp = stack;
-	stack = stack->next;
-	temp->next = stack->next;
-	stack->next = temp;
+	if (stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		temp->next = stack->next;
+		stack->next = temp;
+	}
 	if (type == swap_a)
 		ft_printf("sa\n");
 	else if (type == swap_b)
@@ -46,7 +49,7 @@ void	send_num_to_stack(t_stack **stack_from, t_stack **stack_to, t_push type)
 		temp->next = NULL;
 		*stack_to = temp;
 	}
-	else
+	else if (*stack_from && *stack_to)
 	{
 		temp = *stack_from;
 		*stack_from = temp->next;

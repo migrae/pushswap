@@ -6,7 +6,7 @@
 /*   By: mgraefen <mgraefen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:25:32 by mgraefen          #+#    #+#             */
-/*   Updated: 2023/02/06 11:22:11 by mgraefen         ###   ########.fr       */
+/*   Updated: 2023/02/13 08:39:20 by mgraefen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,19 @@ t_stack	*rev_rotation(t_stack *stack, t_rotate type)
 {
 	t_stack	*temp;
 
-	temp = stack;
-	stack = ft_stack_last(stack);
-	stack->next = temp;
-	while (temp->next != stack)
-		temp = temp->next;
-	temp->next = NULL;
-	if (type == rotate_a)
-		ft_printf("rra\n");
-	else if (type == rotate_b)
-		ft_printf("rrb\n");
+	if (stack && stack->next)
+	{
+		temp = stack;
+		stack = ft_stack_last(stack);
+		stack->next = temp;
+		while (temp->next != stack)
+			temp = temp->next;
+		temp->next = NULL;
+		if (type == rotate_a)
+			ft_printf("rra\n");
+		else if (type == rotate_b)
+			ft_printf("rrb\n");
+	}
 	return (stack);
 }
 
